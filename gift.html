@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Gift For You 💝</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0810;
+  --deep:#1a0f1e;
+  --rose:#e8607a;
+  --blush:#f4a7b5;
+  --gold:#e8c87a;
+  --gold2:#c9954a;
+  --muted:rgba(255,255,255,0.5);
+  --border:rgba(232,200,122,0.25);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--ink);min-height:100vh;overflow-x:hidden;color:#fff}
+
+/* AURORA */
+.aurora{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 20% 20%,rgba(120,40,80,.35) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 80% at 80% 70%,rgba(60,20,90,.4) 0%,transparent 60%),
+             radial-gradient(ellipse 100% 40% at 50% 100%,rgba(180,80,60,.2) 0%,transparent 60%);
+  animation:aurora 10s ease-in-out infinite alternate}
+@keyframes aurora{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(30deg) brightness(1.15)}}
+
+/* STARS */
+.stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.1;transform:scale(1)}50%{opacity:.9;transform:scale(1.4)}}
+
+/* PARTICLES */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.particle{position:absolute;border-radius:50%;background:radial-gradient(circle,var(--gold),transparent);animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{0%{transform:translateY(110vh) scale(0);opacity:0}10%{opacity:.7}90%{opacity:.3}100%{transform:translateY(-10vh) scale(1.5);opacity:0}}
+
+/* SCREENS */
+.screen{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.screen.hidden{display:none!important}
+
+/* ── PASSWORD ── */
+.pw-wrap{position:relative;max-width:420px;width:100%;text-align:center}
+.pw-wrap::before{content:'';position:absolute;inset:-2px;border-radius:32px;
+  background:linear-gradient(135deg,var(--gold),var(--rose),var(--gold2),var(--rose));
+  background-size:300% 300%;animation:gradShift 4s ease infinite;z-index:-1;filter:blur(12px);opacity:.6}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.pw-box{background:rgba(26,15,30,.92);border:1px solid var(--border);border-radius:32px;padding:52px 40px 44px;backdrop-filter:blur(20px);animation:popIn .8s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes popIn{from{transform:scale(.75) translateY(30px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.gift-orb{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f9c0cc,var(--rose) 50%,#8b2240);
+  margin:0 auto 24px;display:flex;align-items:center;justify-content:center;font-size:38px;
+  box-shadow:0 0 40px rgba(232,96,122,.5),0 0 80px rgba(232,96,122,.2);animation:orbPulse 3s ease-in-out infinite}
+@keyframes orbPulse{0%,100%{box-shadow:0 0 40px rgba(232,96,122,.5),0 0 80px rgba(232,96,122,.2)}50%{box-shadow:0 0 60px rgba(232,96,122,.7),0 0 120px rgba(232,96,122,.35)}}
+.pw-box h1{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;letter-spacing:1px;
+  background:linear-gradient(135deg,#fff,var(--gold),#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.pw-box .tagline{color:var(--muted);font-size:.9rem;font-weight:200;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;line-height:1.7}
+.pw-input{width:100%;padding:16px 24px;background:rgba(255,255,255,.07);border:1px solid rgba(232,200,122,.3);border-radius:60px;
+  color:#fff;font-size:1.2rem;text-align:center;letter-spacing:6px;outline:none;font-family:'Jost',sans-serif;
+  transition:border-color .3s,box-shadow .3s,background .3s;margin-bottom:16px}
+.pw-input::placeholder{letter-spacing:3px;color:rgba(255,255,255,.25);font-size:1rem}
+.pw-input:focus{border-color:var(--gold);background:rgba(232,200,122,.08);box-shadow:0 0 0 3px rgba(232,200,122,.15),0 0 30px rgba(232,200,122,.1)}
+.pw-input.shake{animation:shake .4s ease;border-color:var(--rose)}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-7px)}80%{transform:translateX(7px)}}
+.btn-primary{width:100%;padding:16px;background:linear-gradient(135deg,var(--rose),#b03060,var(--rose));background-size:200% 200%;
+  color:#fff;border:none;border-radius:60px;font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;box-shadow:0 6px 30px rgba(232,96,122,.4);transition:transform .2s,box-shadow .2s;animation:gradShift 3s ease infinite}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(232,96,122,.55)}
+.pw-error{margin-top:14px;color:#f08090;font-size:.82rem;min-height:18px;letter-spacing:1px}
+
+/* ── VIDEO ── */
+.video-container{max-width:680px;width:100%}
+.vid-top-label{text-align:center;margin-bottom:24px;animation:fadeUp .6s ease both}
+.vid-top-label h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;
+  background:linear-gradient(135deg,#fff,var(--blush));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.vid-top-label p{color:var(--muted);font-size:.82rem;letter-spacing:2px;text-transform:uppercase;margin-top:6px}
+.vid-progress{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
+.vdot{height:4px;border-radius:2px;background:rgba(255,255,255,.15);transition:all .5s ease;width:40px}
+.vdot.active{background:linear-gradient(90deg,var(--gold),var(--rose));width:60px!important;box-shadow:0 0 12px rgba(232,200,122,.5)}
+.vdot.done{background:var(--gold2)}
+.video-card{background:rgba(26,15,30,.85);border:1px solid var(--border);border-radius:24px;overflow:hidden;
+  backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(232,200,122,.1)}
+video#mainVideo{width:100%;display:block;background:#000;max-height:400px;object-fit:contain}
+.vid-info{padding:20px 28px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(255,255,255,.06)}
+.vid-text .vid-label{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;font-weight:300}
+.vid-text .vid-sub{font-size:.78rem;color:var(--muted);margin-top:3px;letter-spacing:1px}
+.btn-continue{padding:13px 32px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--ink);border:none;border-radius:60px;
+  font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 4px 20px rgba(232,200,122,.4);transition:transform .2s,box-shadow .2s;display:none;white-space:nowrap}
+.btn-continue:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,200,122,.55)}
+
+/* ── TIPS PAGES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.tips-page{max-width:760px;width:100%}
+.page-hero{text-align:center;margin-bottom:48px;animation:fadeUp .7s ease both}
+.hero-icon{font-size:72px;display:inline-block;animation:heroFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(232,200,122,.6))}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.page-hero h2{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;
+  background:linear-gradient(135deg,#fff 0%,var(--gold) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:16px;line-height:1.2}
+.page-hero .subtitle{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--blush);font-size:1.1rem;margin-top:10px}
+.gold-line{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto}
+.section-title{display:flex;align-items:center;gap:14px;margin:40px 0 20px;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--gold);letter-spacing:1px;animation:fadeUp .6s ease both}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(232,200,122,.4),transparent)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 22px;
+  position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;animation:fadeUp .6s ease both;backdrop-filter:blur(10px)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--rose),transparent);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(232,200,122,.3);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(232,200,122,.15)}
+.card:hover::before{opacity:1}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.2s}.card:nth-child(5){animation-delay:.25s}.card:nth-child(6){animation-delay:.3s}
+.card-icon{font-size:30px;margin-bottom:12px;display:block;filter:drop-shadow(0 0 8px rgba(232,200,122,.3))}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--gold);margin-bottom:10px;line-height:1.3}
+.card p{font-size:.88rem;font-weight:200;color:rgba(255,255,255,.72);line-height:1.75}
+.card p strong{color:var(--blush);font-weight:400}
+.card.full{grid-column:1/-1}
+.note-card{position:relative;background:rgba(232,200,122,.07);border:1px solid rgba(232,200,122,.3);border-radius:24px;
+  padding:40px 36px;text-align:center;margin-top:40px;margin-bottom:60px;overflow:hidden;animation:fadeUp .8s ease .4s both}
+.note-card::before{content:'❝';position:absolute;top:-10px;left:20px;font-size:120px;color:rgba(232,200,122,.06);font-family:Georgia,serif;line-height:1}
+.note-card p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(255,255,255,.85);line-height:1.9;position:relative;z-index:1}
+.note-card .sig{margin-top:20px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  background:linear-gradient(135deg,var(--gold),var(--blush));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn-gold{display:block;width:100%;max-width:340px;margin:32px auto 0;padding:18px 32px;
+  background:linear-gradient(135deg,var(--gold2),var(--gold),var(--gold2));background-size:200% 200%;
+  color:var(--ink);border:none;border-radius:60px;font-family:'Jost',sans-serif;font-size:.85rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;box-shadow:0 8px 32px rgba(232,200,122,.35);transition:transform .2s,box-shadow .2s;animation:gradShift 3s ease infinite,fadeUp .8s ease .5s both}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(232,200,122,.5)}
+
+@media(max-width:500px){
+  .pw-box{padding:40px 24px 36px}
+  .pw-box h1{font-size:2rem}
+  .page-hero h2{font-size:2rem}
+  .vid-info{flex-direction:column;align-items:flex-start}
+  .note-card{padding:32px 22px}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora"></div>
+<div class="stars" id="stars"></div>
+<div class="particles" id="particles"></div>
+
+<!-- ══ SCREEN 1: PASSWORD ══ -->
+<div class="screen" id="screenPassword">
+  <div class="pw-wrap">
+    <div class="pw-box">
+      <div class="gift-orb">🎁</div>
+      <h1>Something Special</h1>
+      <p class="tagline">A gift wrapped with love<br>just for you</p>
+      <input type="password" class="pw-input" id="pwInput" placeholder="enter the secret" maxlength="30"
+             onkeydown="if(event.key==='Enter')checkPassword()"/>
+      <button class="btn-primary" onclick="checkPassword()">✦ Unwrap Your Gift ✦</button>
+      <div class="pw-error" id="pwError"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 2: VIDEOS ══ -->
+<div class="screen hidden" id="screenVideos">
+  <div class="video-container">
+    <div class="vid-top-label">
+      <h2>A Message Just For You</h2>
+      <p>sit back &amp; enjoy ✨</p>
+    </div>
+    <div class="vid-progress">
+      <div class="vdot active" id="vdot1"></div>
+      <div class="vdot" id="vdot2"></div>
+    </div>
+    <div class="video-card">
+      <video id="mainVideo" controls playsinline>
+        <source src="" type="video/mp4">
+      </video>
+      <div class="vid-info">
+        <div class="vid-text">
+          <div class="vid-label" id="vidLabel">Video 1 of 2</div>
+          <div class="vid-sub" id="vidSub">Watch until the end — there's more! ✨</div>
+        </div>
+        <button class="btn-continue" id="btnNext" onclick="goToTips()">Continue →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 3: STETHOSCOPE TIPS ══ -->
+<div class="screen hidden" id="screenTips">
+  <div class="tips-page">
+    <div class="page-hero">
+      <span class="hero-icon">🩺</span>
+      <h2>Listening to Baby's Heartbeat</h2>
+      <p class="subtitle">A gentle guide to using your stethoscope</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="section-title">✦ Getting Started</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">📅</span>
+        <h3>When to Start Listening</h3>
+        <p>With a standard stethoscope you can typically hear baby's heartbeat around <strong>18–20 weeks</strong>. Earlier detection is easier with a Doppler. Be patient — it takes a little practice and it is so worth it!</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤫</span>
+        <h3>Find a Quiet Space</h3>
+        <p>Choose a calm, silent room — turn off the TV, fans, and phone notifications. Even fabric rustling can interfere. Early morning is ideal when baby tends to be calmer and sounds are clearest.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛋️</span>
+        <h3>Get Comfortable First</h3>
+        <p>Lie on your back or recline on a firm surface and let your belly muscles fully relax. Even slight tension makes sounds harder to pick up. Take three slow deep breaths before you begin.</p>
+      </div>
+    </div>
+
+    <div class="section-title">✦ Finding the Heartbeat</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">🎯</span>
+        <h3>Where to Place the Chest Piece</h3>
+        <p>Start just above your pubic bone and slowly move upward. Baby's heart sits in the lower abdomen early on and moves higher as baby grows. Use gentle, firm, steady pressure at all times.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💓</span>
+        <h3>What It Sounds Like</h3>
+        <p>A baby's heartbeat is a rapid galloping rhythm — much faster than yours. A healthy fetal heart rate is <strong>110–160 beats per minute</strong>. It is truly one of the most magical sounds you will ever hear.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🔄</span>
+        <h3>Move Slowly and Methodically</h3>
+        <p>If you don't find it straight away, don't panic — move the chest piece in small slow circles. Try tilting it at different angles too. Small adjustments make a huge difference in the clarity of sound.</p>
+      </div>
+    </div>
+
+    <div class="section-title">✦ Things to Keep in Mind</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">🍃</span>
+        <h3>Don't Confuse with Other Sounds</h3>
+        <p>You may hear your own slow steady pulse, stomach gurgling, or whooshing blood flow. Baby's heartbeat is noticeably faster and rhythmic. With practice you'll tell them apart instantly.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⏱️</span>
+        <h3>Keep Sessions Short and Sweet</h3>
+        <p>Limit listening to 5–10 minutes. Searching too long creates unnecessary anxiety. If you are ever worried — call your midwife or doctor. They have professional Dopplers and are always happy to help.</p>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <p>"Every heartbeat is a tiny reminder — a new life is growing, full of promise, love, and wonder. This gift is a celebration of that miracle and of you, the incredible person nurturing it."</p>
+      <div class="sig">— With all my love 💝</div>
+    </div>
+
+    <button class="btn-gold" onclick="goToPregnancy()">🌸 Your Pregnancy Tips →</button>
+  </div>
+</div>
+
+<!-- ══ SCREEN 4: PREGNANCY TIPS ══ -->
+<div class="screen hidden" id="screenPregnancy">
+  <div class="tips-page">
+    <div class="page-hero">
+      <span class="hero-icon">🤰</span>
+      <h2>Your Pregnancy Journey</h2>
+      <p class="subtitle">Little reminders, straight from the heart — just for you, mama 💛</p>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="section-title">🌿 Taking Care of Your Body</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">💧</span>
+        <h3>Drink Water Like It's Your Job</h3>
+        <p>Water is doing SO much for you and baby — building amniotic fluid, carrying nutrients, flushing toxins. Aim for 8–10 glasses daily. Keep a cute bottle with you everywhere. You will genuinely feel the difference.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🥗</span>
+        <h3>Eat the Rainbow (Really!)</h3>
+        <p>Don't stress about eating "perfectly" — just add colour to every meal. Leafy greens, orange veggies, berries, lentils. Your baby is literally building organs from what you eat. And yes, the occasional chocolate? <strong>Absolutely deserved.</strong> 😄</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">💊</span>
+        <h3>Prenatal Vitamins — Every Single Day</h3>
+        <p>Take them with food if nausea is rough, or try a gummy version. Folic acid, iron, and DHA are the big three — quietly doing incredible work for baby's brain and spine every day, even when you can't see it.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🚶‍♀️</span>
+        <h3>Move a Little Every Day</h3>
+        <p>You don't need a gym. A gentle 20-minute walk reduces swelling, lifts your mood, helps sleep, and prepares your body for labour. Slow yoga on your living room floor counts. <strong>Movement is medicine.</strong></p>
+      </div>
+      <div class="card">
+        <span class="card-icon">😴</span>
+        <h3>Sleep is Sacred — Protect It</h3>
+        <p>Your body is building a human. It <strong>needs</strong> rest. Sleep on your left side for better blood flow to baby, use a pillow between your knees, and never feel guilty about napping. Rest is productive right now.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🦶</span>
+        <h3>Swollen Feet? Elevate and Breathe</h3>
+        <p>Totally normal and annoying — I know! Elevate your legs when sitting, avoid long standing, wear supportive shoes. A gentle foot massage at the end of the day? Yes — and you deserve to ask for one! 💆‍♀️</p>
+      </div>
+    </div>
+
+    <div class="section-title">🧘‍♀️ Your Mind Matters Too</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">🧠</span>
+        <h3>Pregnancy Brain is Real</h3>
+        <p>Forgetting words mid-sentence? Losing your keys constantly? Welcome to pregnancy brain — it's a genuine hormonal thing! Write lists, set reminders, and <strong>laugh about it.</strong> Your brain is reorganising itself into a mama brain. Beautiful.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">😢</span>
+        <h3>It's Okay to Not Be Okay</h3>
+        <p>Pregnancy can be overwhelming, emotional, and scary — and nobody talks about that enough. If you feel anxious, weepy, or just not yourself, please reach out. To me, to your doctor, to anyone. Your mental health matters just as much.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📵</span>
+        <h3>Step Away from Scary Internet Holes</h3>
+        <p>I say this with love — Googling symptoms at 2am is never a good idea. Trust your doctor, trust your body. If something genuinely worries you, call your midwife. That is <strong>exactly</strong> what they are there for.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌬️</span>
+        <h3>Your Secret Breathing Ritual</h3>
+        <p>When things feel too much — breathe in for 4 counts, hold for 4, out for 6. Do it three times. It genuinely calms your nervous system in under a minute. <strong>Always available, always free,</strong> always yours.</p>
+      </div>
+    </div>
+
+    <div class="section-title">📋 Practical Things Worth Knowing</div>
+    <div class="cards-grid">
+      <div class="card">
+        <span class="card-icon">📅</span>
+        <h3>Never Miss Your Antenatal Appointments</h3>
+        <p>These check-ups are your window into baby's world. Growth scans, blood tests, glucose checks — they catch things early when everything is still manageable. Put them in your calendar. Non-negotiable, always.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🧳</span>
+        <h3>Pack Your Hospital Bag Early</h3>
+        <p>Start at 34–35 weeks — not the last minute! Think: good snacks, birth plan, cosy robe, charger, baby's first outfit, documents. Having it ready early means one less thing to panic about on the big day. 🎉</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🛁</span>
+        <h3>Moisturise That Beautiful Bump</h3>
+        <p>Your belly is stretching in ways it never has before — moisturise daily with a good oil or cream (coconut oil is wonderful!). The daily massage is also a beautiful quiet moment of connection with your bump.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🐟</span>
+        <h3>Know What to Avoid on Your Plate</h3>
+        <p>Raw fish, unpasteurised cheeses, deli meats, undercooked eggs — skip these for now. It is not forever, just these precious months. Your meals can still be delicious and exciting with a few smart swaps.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🫀</span>
+        <h3>Count Baby's Kicks</h3>
+        <p>From about 28 weeks, notice your baby's movement patterns. You should feel at least 10 movements in 2 hours during active times. If baby's quieter than usual — drink cold water, lie down, and focus. <strong>Trust your instincts, mama.</strong></p>
+      </div>
+      <div class="card">
+        <span class="card-icon">🦷</span>
+        <h3>Yes, Even Your Teeth Matter</h3>
+        <p>Hormones make gums more sensitive during pregnancy. Keep up with brushing, flossing, and book a dental check — it's completely safe and recommended. Gum health is more connected to baby's wellbeing than most people realise.</p>
+      </div>
+    </div>
+
+    <div class="section-title">💛 Just From Me to You</div>
+    <div class="cards-grid">
+      <div class="card full">
+        <span class="card-icon">🌟</span>
+        <h3>You Are Doing Better Than You Think</h3>
+        <p>Growing a baby while still living life, handling emotions, watching your body change every single day — that takes immense, quiet strength. On the hard days, remember: there is no perfect pregnancy, no perfect mum-to-be. There is only <strong>you</strong>, showing up with love every single day. And that is more than enough. I am so unbelievably proud of you, and I am here for every single step of this journey. 💛</p>
+      </div>
+    </div>
+
+    <div class="note-card">
+      <p>"You were made for this. Your body knows what to do. Your heart already loves this baby more than words can ever say. Just breathe, trust the process, and know with everything — you are never, ever alone in this."</p>
+      <div class="sig">— Always here for you 🌸</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const PASSWORD="190525";
+const VIDEOS=[
+  {src:"video1.mp4",label:"Video 1 of 2",sub:"Watch until the end — there's more! ✨"},
+  {src:"video2.mp4",label:"Video 2 of 2",sub:"Almost there — your gift awaits 🎁"}
+];
+
+/* Stars */
+const starsEl=document.getElementById('stars');
+for(let i=0;i<120;i++){
+  const s=document.createElement('div');s.className='star';
+  const sz=Math.random()*2.5+0.5;
+  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${2+Math.random()*4}s;animation-delay:${Math.random()*5}s`;
+  starsEl.appendChild(s);
+}
+
+/* Particles */
+const particlesEl=document.getElementById('particles');
+for(let i=0;i<25;i++){
+  const p=document.createElement('div');p.className='particle';
+  p.style.cssText=`left:${Math.random()*100}%;width:${3+Math.random()*6}px;height:${3+Math.random()*6}px;animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*10}s`;
+  particlesEl.appendChild(p);
+}
+
+const SCREENS=['screenPassword','screenVideos','screenTips','screenPregnancy'];
+function show(id){
+  SCREENS.forEach(s=>document.getElementById(s).classList.toggle('hidden',s!==id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function checkPassword(){
+  const val=document.getElementById('pwInput').value.trim();
+  const input=document.getElementById('pwInput');
+  const err=document.getElementById('pwError');
+  if(val.toLowerCase()===PASSWORD.toLowerCase()){
+    err.textContent='';show('screenVideos');loadVideo(0);
+  } else {
+    input.classList.remove('shake');void input.offsetWidth;input.classList.add('shake');
+    err.textContent='✦ Wrong password — try again';input.value='';
+    setTimeout(()=>input.classList.remove('shake'),500);
+  }
+}
+
+let currentVideo=0;
+const vid=document.getElementById('mainVideo');
+const vdot1=document.getElementById('vdot1');
+const vdot2=document.getElementById('vdot2');
+const vidLabel=document.getElementById('vidLabel');
+const vidSub=document.getElementById('vidSub');
+const btnNext=document.getElementById('btnNext');
+
+function loadVideo(index){
+  currentVideo=index;const v=VIDEOS[index];
+  vid.pause();vid.src=v.src;vid.load();vid.play().catch(()=>{});
+  vidLabel.textContent=v.label;vidSub.textContent=v.sub;btnNext.style.display='none';
+  vdot1.className='vdot'+(index===0?' active':' done');
+  vdot2.className='vdot'+(index===1?' active':'');
+}
+
+vid.addEventListener('ended',()=>{
+  if(currentVideo===0){loadVideo(1);}
+  else{btnNext.style.display='block';vdot2.className='vdot done';}
+});
+
+function goToTips(){show('screenTips');}
+function goToPregnancy(){show('screenPregnancy');}
+</script>
+</body>
+</html>
